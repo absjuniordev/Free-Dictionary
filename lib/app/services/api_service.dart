@@ -8,7 +8,7 @@ class ApiService {
 
   Future<DictionaryModel> fetchWord(String word) async {
     try {
-      final response = await dio.get("$_pathApi$word");
+      final response = await dio.get("$_pathApi");
       return DictionaryModel.fromJson(response.data[0]);
     } catch (e) {
       debugPrint(e.toString());
