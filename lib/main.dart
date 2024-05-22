@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_dicionary/app/views/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,18 +7,10 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Free Dictionary'),
-        ),
-        body: const Center(
-          child: Text('Welcome to Free Dictionary!'),
-        ),
-      ),
+    return const MaterialApp(
+      home: HomeScreen(),
     );
   }
 }
