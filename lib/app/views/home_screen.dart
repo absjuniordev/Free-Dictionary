@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _appService = ApiService();
     final _wordControlle = TextEditingController(text: "");
+    final Future<DictionaryModel> _futureWord;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Free Dictionary'),

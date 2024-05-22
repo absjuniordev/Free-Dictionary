@@ -1,4 +1,6 @@
-class DictionaryModel {
+import 'package:flutter/material.dart';
+
+class DictionaryModel extends ChangeNotifier {
   String? word;
   String? phonetic;
   List<Phonetics>? phonetics;
