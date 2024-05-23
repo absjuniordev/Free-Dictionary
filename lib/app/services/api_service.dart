@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
@@ -8,7 +9,7 @@ class ApiService {
 
   Future<DictionaryModel> fetchWord(String word) async {
     try {
-      final response = await dio.get("$_pathApi");
+      final response = await dio.get("$_pathApi$word");
       return DictionaryModel.fromJson(response.data[0]);
     } catch (e) {
       debugPrint(e.toString());
