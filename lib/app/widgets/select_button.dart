@@ -11,36 +11,30 @@ class SelectButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1),
-              ),
+            child: Card(
+              elevation: 3,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("Words list",
-                      style: TextStyle(fontSize: 20, color: Colors.black))),
+                      style: TextStyle(fontSize: 15, color: Colors.black))),
             ),
           ),
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1),
-              ),
+            child: Card(
+              elevation: 3,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("History",
-                      style: TextStyle(fontSize: 20, color: Colors.black))),
+                      style: TextStyle(fontSize: 15, color: Colors.black))),
             ),
           ),
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 1),
-              ),
+            child: Card(
+              elevation: 3,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("Favorites",
-                      style: TextStyle(fontSize: 20, color: Colors.black))),
+                      style: TextStyle(fontSize: 15, color: Colors.black))),
             ),
           ),
         ],

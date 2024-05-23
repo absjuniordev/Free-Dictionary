@@ -36,13 +36,17 @@ class _WordsViewState extends State<WordsView> {
         ),
         itemBuilder: (BuildContext context, int index) {
           String key = wordsAssets.keys.elementAt(index);
-          return Card(
-            color: const Color.fromARGB(255, 241, 202, 83),
-            elevation: 5,
-            child: Center(
-              child: Text(
-                key,
-                style: const TextStyle(fontSize: 20, color: Colors.black),
+          return InkWell(
+            onTap: () {},
+            splashColor: Colors.blue,
+            child: Card(
+              elevation: 5,
+              child: Center(
+                child: Text(
+                  key,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           );

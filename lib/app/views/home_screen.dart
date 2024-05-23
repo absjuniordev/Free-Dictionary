@@ -12,16 +12,24 @@ class HomeScreen extends StatelessWidget {
     return const Scaffold(
         backgroundColor: Color.fromARGB(255, 219, 203, 154),
         body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: SelectButton(),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("data"),
+            SizedBox(height: 25),
+            Card(
+              color: Color.fromARGB(255, 236, 206, 113),
+              elevation: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SelectButton(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text("data"),
+                  ),
+                ],
+              ),
             ),
             Expanded(child: WordsView()),
           ],
