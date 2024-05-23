@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,19 +27,27 @@ class _WordsViewState extends State<WordsView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: wordsAssets.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GridView.builder(
+        itemCount: wordsAssets.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          String key = wordsAssets.keys.elementAt(index);
+          return Card(
+            color: const Color.fromARGB(255, 241, 202, 83),
+            elevation: 5,
+            child: Center(
+              child: Text(
+                key,
+                style: const TextStyle(fontSize: 20, color: Colors.black),
+              ),
+            ),
+          );
+        },
       ),
-      itemBuilder: (BuildContext context, int index) {
-        String key = wordsAssets.keys.elementAt(index);
-        return Card(
-          child: ListTile(
-            title: Text(key),
-          ),
-        );
-      },
     );
   }
 }
