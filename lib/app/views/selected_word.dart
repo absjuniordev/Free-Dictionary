@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
+import 'package:free_dicionary/app/widgets/audio_play_widget.dart';
 import 'package:provider/provider.dart';
 
 class SelectedWord extends StatelessWidget {
