@@ -18,12 +18,4 @@ class DictionaryProvider extends ChangeNotifier {
       throw Exception("Failed to fetch word");
     }
   }
-
-  Future<DictionaryModel?> get wordFuture {
-    if (word != null) {
-      return _apiService.fetchWord(word!.word!);
-    } else {
-      return Future.value(null);
-    }
-  }
 }

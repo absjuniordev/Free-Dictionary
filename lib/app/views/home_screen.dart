@@ -8,31 +8,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final _dictionaryProvider = Provider.of<DictionaryProvider>(context);
-
-    return const Scaffold(
-        backgroundColor: Color.fromARGB(255, 219, 203, 154),
-        body: Column(
-          children: [
-            SizedBox(height: 25),
-            Card(
-              color: Color.fromARGB(255, 236, 206, 113),
-              elevation: 5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SelectButton(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text("data"),
-                  ),
-                ],
-              ),
+    final sizeOff = MediaQuery.of(context).size;
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 219, 203, 154),
+      body: Column(
+        children: [
+          SizedBox(height: sizeOff.height / 20),
+          const Card(
+            color: Color.fromARGB(255, 236, 206, 113),
+            elevation: 5,
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: SelectButton(),
             ),
-            Expanded(child: WordsView()),
-          ],
-        ));
+          ),
+          const Expanded(child: WordsView()),
+        ],
+      ),
+    );
   }
 }

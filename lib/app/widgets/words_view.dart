@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../views/selected_word.dart';
+
 class WordsView extends StatefulWidget {
   const WordsView({super.key});
 
@@ -37,7 +39,14 @@ class _WordsViewState extends State<WordsView> {
         itemBuilder: (BuildContext context, int index) {
           String key = wordsAssets.keys.elementAt(index);
           return InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SelectedWord(),
+                ),
+              );
+            },
             splashColor: Colors.blue,
             child: Card(
               elevation: 5,
