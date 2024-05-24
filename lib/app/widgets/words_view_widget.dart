@@ -4,14 +4,14 @@ import 'package:flutter/services.dart';
 
 import '../views/selected_word.dart';
 
-class WordsView extends StatefulWidget {
-  const WordsView({super.key});
+class WordsViewWidget extends StatefulWidget {
+  const WordsViewWidget({super.key});
 
   @override
-  State<WordsView> createState() => _WordsViewState();
+  State<WordsViewWidget> createState() => _WordsViewWidgetState();
 }
 
-class _WordsViewState extends State<WordsView> {
+class _WordsViewWidgetState extends State<WordsViewWidget> {
   Map<String, dynamic> wordsAssets = {};
   @override
   void initState() {
@@ -43,7 +43,9 @@ class _WordsViewState extends State<WordsView> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SelectedWord(),
+                  builder: (context) => SelectedWord(
+                    selectedWord: key,
+                  ),
                 ),
               );
             },

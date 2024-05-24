@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/widgets/select_button.dart';
-import 'package:free_dicionary/app/widgets/words_view.dart';
+import 'package:free_dicionary/app/widgets/select_button_widget.dart';
+import 'package:free_dicionary/app/widgets/words_view_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final _dictionaryProvider = Provider.of<DictionaryProvider>(context);
     final sizeOff = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 219, 203, 154),
@@ -19,10 +18,10 @@ class HomeScreen extends StatelessWidget {
             elevation: 5,
             child: Padding(
               padding: EdgeInsets.all(8.0),
-              child: SelectButton(),
+              child: SelectButtonWidget(),
             ),
           ),
-          const Expanded(child: WordsView()),
+          const Expanded(child: WordsViewWidget()),
         ],
       ),
     );
