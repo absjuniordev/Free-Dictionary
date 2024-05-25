@@ -7,7 +7,6 @@ class HomeScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sizeOff = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [

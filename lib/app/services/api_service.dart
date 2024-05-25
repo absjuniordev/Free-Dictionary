@@ -10,7 +10,7 @@ class ApiService {
   Future<DictionaryModel> getDataApi(String word) async {
     try {
       final response = await dio.get("$_pathApi$word");
-      return DictionaryModel.fromJson(response.data);
+      return DictionaryModel.fromJson(response.data[0]);
     } catch (e) {
       debugPrint(e.toString());
       throw Exception("Word not found");

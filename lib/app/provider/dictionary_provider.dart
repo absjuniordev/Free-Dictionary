@@ -8,11 +8,11 @@ class DictionaryProvider extends ChangeNotifier {
 
   DictionaryModel? get word => _word;
 
-  Future<void> fecthWord(String word) async {
+  Future<DictionaryModel> fetchWord(String word) async {
     try {
       _word = await _apiService.getDataApi(word);
-
       notifyListeners();
+      return _word!;
     } catch (e) {
       debugPrint(e.toString());
       throw Exception("Failed to fetch word");

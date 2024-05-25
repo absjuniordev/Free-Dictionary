@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:free_dicionary/app/models/dictionary_model.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 import 'package:free_dicionary/app/views/loading_page_view.dart';
-import 'package:free_dicionary/app/widgets/audio_play_widget.dart';
 import 'package:provider/provider.dart';
 
 class SelectedWordView extends StatelessWidget {
@@ -10,14 +10,21 @@ class SelectedWordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _dictionaryProvider = Provider.of<DictionaryProvider>(context);
-    final word = _dictionaryProvider.fecthWord(selectedWord);
-    return FutureBuilder(
-      future: word,
+    final dictionaryProvider =
+        Provider.of<DictionaryProvider>(context, listen: false);
+
+    return FutureBuilder<DictionaryModel?>(
+      future: dictionaryProvider.fetchWord(selectedWord),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPageView();
         } else {
+          final word = snapshot.data!;
+          final phoneticText = word.phonetics!
+              .firstWhere((phonetic) =>
+                  phonetic.text != null && phonetic.text!.isNotEmpty)
+              .text
+              ?.replaceAll('/', '');
           return Scaffold(
             body: Container(
               color: const Color.fromRGBO(106, 218, 238, 100),
@@ -45,14 +52,21 @@ class SelectedWordView extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(selectedWord),
-                            Text(word.toString()),
+                            Text(
+                              word.word!,
+                              style: const TextStyle(fontSize: 30),
+                            ),
+                            Text(phoneticText ?? '',
+                                style: const TextStyle(fontSize: 30)),
                           ],
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 15),
+                  Text("Audio"),
+                  const SizedBox(height: 15),
+                  Text("Meanings")
                 ],
               ),
             ),
