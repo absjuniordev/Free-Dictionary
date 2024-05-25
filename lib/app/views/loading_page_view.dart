@@ -10,6 +10,7 @@ class LoadingPageView extends StatelessWidget {
       backgroundColor: ctxTh.primaryColor,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(
               backgroundColor: ctxTh.primaryTextTheme.headlineSmall?.color,
@@ -22,6 +23,7 @@ class LoadingPageView extends StatelessWidget {
               'Loading...',
               style: TextStyle(
                 color: ctxTh.primaryTextTheme.titleLarge?.color,
+                fontSize: 30,
               ),
             ),
           ],

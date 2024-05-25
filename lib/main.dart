@@ -13,19 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => DictionaryProvider(),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomeScreenView(),
-        theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            centerTitle: true,
-            color: Color.fromARGB(255, 185, 7, 7),
-            titleTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-            ),
-          ),
-        ),
+        home: HomeScreenView(),
       ),
     );
   }

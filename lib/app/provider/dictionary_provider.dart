@@ -10,12 +10,12 @@ class DictionaryProvider extends ChangeNotifier {
 
   Future<void> fecthWord(String word) async {
     try {
-      _word = await _apiService.fetchWord(word);
+      _word = await _apiService.getDataApi(word);
 
       notifyListeners();
     } catch (e) {
       debugPrint(e.toString());
-      // throw Exception("Failed to fetch word");
+      throw Exception("Failed to fetch word");
     }
   }
 }

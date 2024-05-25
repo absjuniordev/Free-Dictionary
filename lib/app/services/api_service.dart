@@ -7,10 +7,10 @@ class ApiService {
   final dio = Dio();
   static const _pathApi = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
-  Future<DictionaryModel> fetchWord(String word) async {
+  Future<DictionaryModel> getDataApi(String word) async {
     try {
       final response = await dio.get("$_pathApi$word");
-      return DictionaryModel.fromJson(response.data[0]);
+      return DictionaryModel.fromJson(response.data);
     } catch (e) {
       debugPrint(e.toString());
       throw Exception("Word not found");
