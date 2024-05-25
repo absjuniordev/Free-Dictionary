@@ -15,7 +15,7 @@ class DictionaryProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       debugPrint(e.toString());
-      throw Exception("Failed to fetch word");
+      // throw Exception("Failed to fetch word");
     }
   }
 }
