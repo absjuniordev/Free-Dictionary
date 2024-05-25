@@ -4,6 +4,8 @@ import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 import 'package:free_dicionary/app/views/loading_page_view.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/audio_play_widget.dart';
+
 class SelectedWordView extends StatelessWidget {
   const SelectedWordView({super.key, required this.selectedWord});
   final String selectedWord;
@@ -78,7 +80,9 @@ class SelectedWordView extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  const Text("Audio"),
+                  AudioPlayWidget(
+                    setAudioUrl: audioUrl!,
+                  ),
                   const SizedBox(height: 15),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
@@ -95,7 +99,6 @@ class SelectedWordView extends StatelessWidget {
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Text(audioUrl!),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
