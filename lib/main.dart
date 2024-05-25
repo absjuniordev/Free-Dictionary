@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
-import 'package:free_dicionary/app/views/home_screen.dart';
+import 'package:free_dicionary/app/views/home_screen_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       create: (_) => DictionaryProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
+        home: const HomeScreenView(),
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
             centerTitle: true,

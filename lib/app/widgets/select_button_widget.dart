@@ -12,7 +12,7 @@ class SelectButtonWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Card(
-              elevation: 3,
+              elevation: 5,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("Words list",
@@ -21,7 +21,7 @@ class SelectButtonWidget extends StatelessWidget {
           ),
           Expanded(
             child: Card(
-              elevation: 3,
+              elevation: 5,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("History",
@@ -30,7 +30,7 @@ class SelectButtonWidget extends StatelessWidget {
           ),
           Expanded(
             child: Card(
-              elevation: 3,
+              elevation: 5,
               child: TextButton(
                   onPressed: () {},
                   child: const Text("Favorites",

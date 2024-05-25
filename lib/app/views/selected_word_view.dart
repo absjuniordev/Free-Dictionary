@@ -3,8 +3,8 @@ import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 import 'package:free_dicionary/app/widgets/audio_play_widget.dart';
 import 'package:provider/provider.dart';
 
-class SelectedWord extends StatelessWidget {
-  const SelectedWord({super.key, required this.selectedWord});
+class SelectedWordView extends StatelessWidget {
+  const SelectedWordView({super.key, required this.selectedWord});
   final String selectedWord;
 
   @override
@@ -12,7 +12,7 @@ class SelectedWord extends StatelessWidget {
     final _dictionaryProvider = Provider.of<DictionaryProvider>(context);
     final word = _dictionaryProvider.fecthWord(selectedWord);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 219, 203, 154),
+      backgroundColor: const Color.fromRGBO(106, 218, 238, 100),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +31,7 @@ class SelectedWord extends StatelessWidget {
               height: 300,
               decoration: BoxDecoration(
                 border: Border.all(),
-                color: const Color.fromARGB(255, 199, 151, 207),
+                color: const Color.fromARGB(255, 175, 173, 100),
               ),
               child: const Center(
                 child: Column(

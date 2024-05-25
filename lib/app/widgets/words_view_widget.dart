@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../views/selected_word.dart';
+import '../views/selected_word_view.dart';
 
 class WordsViewWidget extends StatefulWidget {
   const WordsViewWidget({super.key});
@@ -43,7 +43,7 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SelectedWord(
+                  builder: (context) => SelectedWordView(
                     selectedWord: key,
                   ),
                 ),
@@ -51,12 +51,14 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
             },
             splashColor: Colors.blue,
             child: Card(
-              elevation: 5,
+              elevation: 3,
               child: Center(
                 child: Text(
                   key,
                   style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
