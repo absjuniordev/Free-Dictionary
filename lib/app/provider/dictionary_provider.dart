@@ -4,8 +4,11 @@ import 'package:free_dicionary/app/services/api_service.dart';
 
 class DictionaryProvider extends ChangeNotifier {
   final _apiService = ApiService();
-  DictionaryModel? _word;
 
+  int _activeIndex = -1;
+  int get activeIndex => _activeIndex;
+
+  DictionaryModel? _word;
   DictionaryModel? get word => _word;
 
   Future<DictionaryModel> fetchWord(String word) async {
@@ -17,5 +20,10 @@ class DictionaryProvider extends ChangeNotifier {
       debugPrint(e.toString());
       throw Exception("Failed to fetch word");
     }
+  }
+
+  selectedButton(int index) {
+    _activeIndex = index;
+    notifyListeners();
   }
 }
