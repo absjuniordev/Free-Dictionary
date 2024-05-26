@@ -3,7 +3,10 @@ import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 import 'package:free_dicionary/app/views/home_screen_view.dart';
 import 'package:provider/provider.dart';
 
+import 'app/utils/dependency_injection.dart';
+
 void main() {
+  DependencyInjection().setupDependency();
   runApp(const MyApp());
 }
 

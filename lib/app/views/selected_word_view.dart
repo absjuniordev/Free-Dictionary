@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 import 'package:free_dicionary/app/views/loading_page_view.dart';
-import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
 import '../widgets/audio_play_widget.dart';
+
+final getIt = GetIt.instance;
 
 class SelectedWordView extends StatelessWidget {
   const SelectedWordView({super.key, required this.selectedWord});
@@ -13,11 +15,10 @@ class SelectedWordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dictionaryProvider =
-        Provider.of<DictionaryProvider>(context, listen: false);
+    final injectorStore = getIt<DictionaryProvider>();
 
     return FutureBuilder<DictionaryModel?>(
-      future: dictionaryProvider.fetchWord(selectedWord),
+      future: injectorStore.fetchWord(selectedWord),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPageView();

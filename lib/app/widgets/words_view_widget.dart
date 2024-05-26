@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
-import 'package:provider/provider.dart';
 
 import '../views/selected_word_view.dart';
 
@@ -31,13 +30,11 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final providerDictionary =
-        Provider.of<DictionaryProvider>(context, listen: false);
-
+    final injectorStore = getIt<DictionaryProvider>();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListenableBuilder(
-        listenable: providerDictionary,
+        listenable: injectorStore,
         builder: (_, __) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -46,16 +43,16 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
               color: Colors.transparent,
               elevation: 50,
               child: Text(
-                providerDictionary.activeIndex == 0
+                injectorStore.activeIndex == 0
                     ? "Words List"
-                    : providerDictionary.activeIndex == 1
+                    : injectorStore.activeIndex == 1
                         ? "History"
                         : "Favorites",
                 style: const TextStyle(fontSize: 20, color: Colors.black),
               ),
             ),
             const Divider(),
-            providerDictionary.activeIndex == 0
+            injectorStore.activeIndex == 0
                 ? Expanded(
                     child: GridView.builder(
                       itemCount: wordsAssets.length,
@@ -95,7 +92,7 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                       },
                     ),
                   )
-                : providerDictionary.activeIndex == 1
+                : injectorStore.activeIndex == 1
                     ? const Center(child: Text("History"))
                     : const Center(child: Text("Favorites")),
           ],
