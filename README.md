@@ -1,8 +1,4 @@
-Claro, aqui está um exemplo de README para o seu aplicativo:
-
----
-
-# My English Dictionary App
+# Free-Dictionary
 
 Este é um aplicativo simples de dicionário de inglês, onde os usuários podem visualizar várias palavras em inglês e obter informações detalhadas sobre cada uma delas, incluindo pronúncia, significado e a capacidade de ouvir a pronúncia.
 
