@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
@@ -94,9 +95,10 @@ class SelectedWordView extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
+                    child: AutoSizeText(
                       '${word.meanings![0].partOfSpeech?[0].toUpperCase()}${word.meanings![0].partOfSpeech!.substring(1)}: ${word.meanings![0].definitions![0].definition}',
                       style: const TextStyle(fontSize: 20),
+                      maxLines: 4,
                     ),
                   ),
                   const Spacer(),
