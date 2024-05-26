@@ -79,11 +79,11 @@ class SelectedWordView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 20),
                   AudioPlayWidget(
                     setAudioUrl: audioUrl!,
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 30),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
@@ -96,9 +96,10 @@ class SelectedWordView extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       '${word.meanings![0].partOfSpeech?[0].toUpperCase()}${word.meanings![0].partOfSpeech!.substring(1)}: ${word.meanings![0].definitions![0].definition}',
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
+                  const Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(

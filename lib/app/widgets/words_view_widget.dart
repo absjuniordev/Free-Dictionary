@@ -31,39 +31,58 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: GridView.builder(
-        itemCount: wordsAssets.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          String key = wordsAssets.keys.elementAt(index);
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SelectedWordView(
-                    selectedWord: key,
-                  ),
-                ),
-              );
-            },
-            splashColor: Colors.blue,
-            child: Card(
-              elevation: 3,
-              child: Center(
-                child: Text(
-                  key,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 35),
+          const Card(
+            color: Colors.transparent,
+            elevation: 50,
+            child: Text(
+              " Words List",
+              style: TextStyle(fontSize: 20, color: Colors.black),
             ),
-          );
-        },
+          ),
+          const SizedBox(height: 5),
+          Expanded(
+            child: GridView.builder(
+              itemCount: wordsAssets.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                crossAxisCount: 3,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                String key = wordsAssets.keys.elementAt(index);
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SelectedWordView(
+                          selectedWord: key,
+                        ),
+                      ),
+                    );
+                  },
+                  splashColor: const Color.fromARGB(255, 92, 125, 151),
+                  child: Card(
+                    elevation: 3,
+                    child: Center(
+                      child: Text(
+                        key,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
