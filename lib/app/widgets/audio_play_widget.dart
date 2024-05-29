@@ -43,7 +43,7 @@ class _AudioPlayWidgetState extends State<AudioPlayWidget> {
         AudioSource.uri(Uri.parse(widget.setAudioUrl)),
       );
     } catch (e) {
-      print('Erro ao configurar o áudio: $e');
+      debugPrint(e.toString());
     }
   }
 
@@ -87,6 +87,8 @@ class _AudioPlayWidgetState extends State<AudioPlayWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // final sizeOff = MediaQuery.of(context).size.height;
+
     return Container(
       constraints: const BoxConstraints(
         maxHeight: 100,

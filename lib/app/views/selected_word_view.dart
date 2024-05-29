@@ -16,6 +16,7 @@ class SelectedWordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final injectorStore = getIt<DictionaryProvider>();
+    final sizeOff = MediaQuery.of(context).size.height;
 
     return FutureBuilder<DictionaryModel?>(
       future: injectorStore.fetchWord(selectedWord),
@@ -44,21 +45,20 @@ class SelectedWordView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 50),
+                  SizedBox(height: sizeOff / 25),
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
-                  const SizedBox(height: 20),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(sizeOff / 70),
                     child: Card(
                       elevation: 5,
                       child: Container(
                         width: double.infinity,
-                        height: 300,
+                        height: sizeOff / 3,
                         decoration: BoxDecoration(
                           border: Border.all(),
                           color: const Color.fromRGBO(255, 175, 173, 100),
@@ -69,11 +69,11 @@ class SelectedWordView extends StatelessWidget {
                             children: [
                               Text(
                                 word.word!,
-                                style: const TextStyle(fontSize: 30),
+                                style: TextStyle(fontSize: sizeOff / 20),
                               ),
                               Text(
                                 phoneticText ?? "",
-                                style: const TextStyle(fontSize: 30),
+                                style: TextStyle(fontSize: sizeOff / 30),
                               ),
                             ],
                           ),
@@ -81,30 +81,33 @@ class SelectedWordView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: sizeOff / 30),
                   AudioPlayWidget(
                     setAudioUrl: audioUrl!,
                   ),
-                  const SizedBox(height: 30),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Padding(
+                    padding: EdgeInsets.all(sizeOff / 70),
                     child: Text(
                       "Meanings",
-                      style:
-                          TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: sizeOff / 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(sizeOff / 70),
                     child: AutoSizeText(
                       '${word.meanings![0].partOfSpeech?[0].toUpperCase()}${word.meanings![0].partOfSpeech!.substring(1)}: ${word.meanings![0].definitions![0].definition}',
-                      style: const TextStyle(fontSize: 20),
+                      style: TextStyle(
+                        fontSize: sizeOff / 40,
+                      ),
                       maxLines: 4,
                     ),
                   ),
                   const Spacer(),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(sizeOff / 80),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -112,10 +115,12 @@ class SelectedWordView extends StatelessWidget {
                           child: Card(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text(
+                              child: Text(
                                 "Voltar",
                                 style: TextStyle(
-                                    fontSize: 25, color: Colors.black),
+                                  fontSize: sizeOff / 35,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
@@ -124,10 +129,12 @@ class SelectedWordView extends StatelessWidget {
                           child: Card(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text(
+                              child: Text(
                                 "Proximo",
                                 style: TextStyle(
-                                    fontSize: 25, color: Colors.black),
+                                  fontSize: sizeOff / 35,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
