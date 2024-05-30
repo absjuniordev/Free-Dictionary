@@ -38,7 +38,6 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
         builder: (_, __) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 35),
             Card(
               color: Colors.transparent,
               elevation: 50,

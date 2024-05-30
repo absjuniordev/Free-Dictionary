@@ -5,7 +5,7 @@ import 'package:free_dicionary/app/services/api_service.dart';
 class DictionaryProvider extends ChangeNotifier {
   final _apiService = ApiService();
 
-  int _activeIndex = -1;
+  int _activeIndex = 0;
   int get activeIndex => _activeIndex;
 
   DictionaryModel? _word;

@@ -10,6 +10,7 @@ class HomeScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final injectorStore = getIt<DictionaryProvider>();
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       bottomNavigationBar: ListenableBuilder(
@@ -34,22 +35,29 @@ class HomeScreenView extends StatelessWidget {
           onTap: injectorStore.selectedButton,
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: const Color.fromRGBO(42, 117, 207, 100),
-            ),
-          ),
-          Expanded(
-            flex: 9,
-            child: Container(
-              color: const Color.fromRGBO(106, 218, 238, 100),
-              child: const WordsViewWidget(),
-            ),
-          ),
-        ],
+      body: Container(
+        color: const Color.fromRGBO(106, 218, 238, 100),
+        child: Column(
+          children: [
+            SizedBox(height: size.height * .22),
+            Expanded(
+              child: Container(
+                width: size.width,
+                padding: const EdgeInsets.only(
+                  top: 20,
+                ),
+                decoration: const BoxDecoration(
+                  color: Color.fromRGBO(42, 117, 207, 100),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: const WordsViewWidget(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
