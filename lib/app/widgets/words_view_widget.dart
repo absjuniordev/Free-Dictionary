@@ -56,6 +56,8 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
             const Divider(),
             injectorStore.activeIndex == 0
                 ? CustomGridView(
+                    favoriteItems: injectorStore.favoriteItems,
+                    onFavoriteToggle: injectorStore.onFavoriteToggle,
                     items: _wordsAssets.keys.toList(),
                     onTap: (key) {
                       _historyWord.insert(0, key);
@@ -71,6 +73,8 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                   )
                 : injectorStore.activeIndex == 1
                     ? CustomGridView(
+                        favoriteItems: injectorStore.favoriteItems,
+                        onFavoriteToggle: injectorStore.onFavoriteToggle,
                         items: _historyWord,
                         onTap: (key) {
                           Navigator.push(
@@ -83,7 +87,21 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                           );
                         },
                       )
-                    : const Center(child: Text("Favorites")),
+                    : CustomGridView(
+                        favoriteItems: injectorStore.favoriteItems,
+                        onFavoriteToggle: injectorStore.onFavoriteToggle,
+                        items: injectorStore.favoriteItems,
+                        onTap: (key) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SelectedWordView(
+                                selectedWord: key,
+                              ),
+                            ),
+                          );
+                        },
+                      )
           ],
         ),
       ),

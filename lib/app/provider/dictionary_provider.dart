@@ -4,8 +4,11 @@ import 'package:free_dicionary/app/services/api_service.dart';
 
 class DictionaryProvider extends ChangeNotifier {
   final _apiService = ApiService();
-
+  final List<String> _favoriteItems = [];
   int _activeIndex = 0;
+
+  List<String> get favoriteItems => _favoriteItems;
+
   int get activeIndex => _activeIndex;
 
   DictionaryModel? _word;
@@ -24,6 +27,15 @@ class DictionaryProvider extends ChangeNotifier {
 
   selectedButton(int index) {
     _activeIndex = index;
+    notifyListeners();
+  }
+
+  onFavoriteToggle(String key) {
+    if (_favoriteItems.contains(key)) {
+      _favoriteItems.remove(key);
+    } else {
+      _favoriteItems.add(key);
+    }
     notifyListeners();
   }
 }
