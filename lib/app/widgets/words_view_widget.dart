@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
 
 import '../views/selected_word_view.dart';
+import 'custom_gridview_widget.dart';
 
 class WordsViewWidget extends StatefulWidget {
   const WordsViewWidget({super.key});
@@ -13,7 +14,9 @@ class WordsViewWidget extends StatefulWidget {
 }
 
 class _WordsViewWidgetState extends State<WordsViewWidget> {
-  Map<String, dynamic> wordsAssets = {};
+  Map<String, dynamic> _wordsAssets = {};
+  final List<String> _historyWord = [];
+
   @override
   void initState() {
     super.initState();
@@ -24,7 +27,7 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
     String jsonString =
         await rootBundle.loadString('assets/words/words_dictionary.json');
     setState(() {
-      wordsAssets = json.decode(jsonString);
+      _wordsAssets = json.decode(jsonString);
     });
   }
 
@@ -52,47 +55,34 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
             ),
             const Divider(),
             injectorStore.activeIndex == 0
-                ? Expanded(
-                    child: GridView.builder(
-                      itemCount: wordsAssets.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        crossAxisCount: 3,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        String key = wordsAssets.keys.elementAt(index);
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SelectedWordView(
-                                  selectedWord: key,
-                                ),
-                              ),
-                            );
-                          },
-                          splashColor: const Color.fromARGB(255, 92, 125, 151),
-                          child: Card(
-                            elevation: 3,
-                            child: Center(
-                              child: Text(
-                                key,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                ? CustomGridView(
+                    items: _wordsAssets.keys.toList(),
+                    onTap: (key) {
+                      _historyWord.insert(0, key);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SelectedWordView(
+                            selectedWord: key,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   )
                 : injectorStore.activeIndex == 1
-                    ? const Center(child: Text("History"))
+                    ? CustomGridView(
+                        items: _historyWord,
+                        onTap: (key) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SelectedWordView(
+                                selectedWord: key,
+                              ),
+                            ),
+                          );
+                        },
+                      )
                     : const Center(child: Text("Favorites")),
           ],
         ),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/widgets/select_button_widget.dart';
 import 'package:free_dicionary/app/widgets/words_view_widget.dart';
-
 import '../provider/dictionary_provider.dart';
+import 'selected_word_view.dart';
 
 class HomeScreenView extends StatelessWidget {
   const HomeScreenView({super.key});
@@ -31,7 +30,7 @@ class HomeScreenView extends StatelessWidget {
             ),
           ],
           currentIndex: injectorStore.activeIndex,
-          selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+          selectedItemColor: Colors.blue,
           onTap: injectorStore.selectedButton,
         ),
       ),
