@@ -16,32 +16,40 @@ class CustomGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sizeOff = MediaQuery.of(context).size.height;
+
     return Expanded(
-      child: GridView.builder(
-        itemCount: items.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          crossAxisCount: 3,
-        ),
-        itemBuilder: (context, index) {
-          String key = items[index];
-          bool isFavorite = favoriteItems.contains(key);
-          return InkWell(
-            onTap: () => onTap(key),
-            child: items.isEmpty
-                ? const Center(
-                    child: Text("Empty"),
-                  )
-                : Card(
+      child: items.isEmpty
+          ? Center(
+              child: Text(
+                "Empty",
+                style: TextStyle(
+                  fontSize: sizeOff / 30,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : GridView.builder(
+              itemCount: items.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                crossAxisCount: 3,
+              ),
+              itemBuilder: (context, index) {
+                String key = items[index];
+                bool isFavorite = favoriteItems.contains(key);
+                return InkWell(
+                  onTap: () => onTap(key),
+                  child: Card(
                     elevation: 3,
                     child: Stack(
                       children: [
                         Center(
                           child: Text(
                             key,
-                            style: const TextStyle(
-                              fontSize: 20,
+                            style: TextStyle(
+                              fontSize: sizeOff / 40,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -62,9 +70,9 @@ class CustomGridView extends StatelessWidget {
                       ],
                     ),
                   ),
-          );
-        },
-      ),
+                );
+              },
+            ),
     );
   }
 }

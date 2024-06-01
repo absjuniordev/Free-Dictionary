@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:free_dicionary/app/widgets/words_view_widget.dart';
 import '../provider/dictionary_provider.dart';
+import '../widgets/card_indication_widget.dart';
 import 'selected_word_view.dart';
 
 class HomeScreenView extends StatelessWidget {
@@ -9,12 +10,15 @@ class HomeScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final injectorStore = getIt<DictionaryProvider>();
-    final size = MediaQuery.of(context).size;
+    final sizeOff = MediaQuery.of(context).size;
 
     return Scaffold(
       bottomNavigationBar: ListenableBuilder(
         listenable: injectorStore,
         builder: (_, __) => BottomNavigationBar(
+          iconSize: sizeOff.width * 0.05,
+          selectedFontSize: sizeOff.width * 0.04,
+          unselectedFontSize: sizeOff.width * 0.03,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.list),
@@ -38,10 +42,18 @@ class HomeScreenView extends StatelessWidget {
         color: const Color.fromRGBO(106, 218, 238, 100),
         child: Column(
           children: [
-            SizedBox(height: size.height * .22),
+            Padding(
+              padding: EdgeInsets.only(
+                top: sizeOff.height / 17,
+                right: sizeOff.height / 50,
+                left: sizeOff.height / 50,
+              ),
+              child: const CardIndicationWidget(),
+            ),
+            SizedBox(height: sizeOff.height / 30),
             Expanded(
               child: Container(
-                width: size.width,
+                width: sizeOff.width,
                 padding: const EdgeInsets.only(
                   top: 20,
                 ),

@@ -1,8 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/provider/dictionary_provider.dart';
-
 import '../views/selected_word_view.dart';
 import 'custom_gridview_widget.dart';
 
@@ -14,26 +11,18 @@ class WordsViewWidget extends StatefulWidget {
 }
 
 class _WordsViewWidgetState extends State<WordsViewWidget> {
-  Map<String, dynamic> _wordsAssets = {};
   final List<String> _historyWord = [];
 
+  final injectorStore = getIt<DictionaryProvider>();
   @override
   void initState() {
     super.initState();
-    _carregarDadosJson();
-  }
-
-  Future<void> _carregarDadosJson() async {
-    String jsonString =
-        await rootBundle.loadString('assets/words/words_dictionary.json');
-    setState(() {
-      _wordsAssets = json.decode(jsonString);
-    });
+    injectorStore.carregarDadosJson();
   }
 
   @override
   Widget build(BuildContext context) {
-    final injectorStore = getIt<DictionaryProvider>();
+    final sizeOff = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListenableBuilder(
@@ -50,7 +39,11 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                     : injectorStore.activeIndex == 1
                         ? "History"
                         : "Favorites",
-                style: const TextStyle(fontSize: 20, color: Colors.black),
+                style: TextStyle(
+                  fontSize: sizeOff / 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const Divider(),
@@ -58,9 +51,10 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                 ? CustomGridView(
                     favoriteItems: injectorStore.favoriteItems,
                     onFavoriteToggle: injectorStore.onFavoriteToggle,
-                    items: _wordsAssets.keys.toList(),
+                    items: injectorStore.wordsAssets.keys.toList(),
                     onTap: (key) {
                       _historyWord.insert(0, key);
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(

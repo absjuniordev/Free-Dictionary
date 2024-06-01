@@ -49,6 +49,7 @@ class SelectedWordView extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.close),
                     onPressed: () {
+                      injectorStore.setPercentIndication();
                       Navigator.of(context).pop();
                     },
                   ),
