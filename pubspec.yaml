@@ -73,6 +73,7 @@ flutter:
     - assets/images/mascot2.jpg
     - assets/images/mascot3.jpg
     - assets/images/mascot4.jpg
+    - assets/lottie/loading.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

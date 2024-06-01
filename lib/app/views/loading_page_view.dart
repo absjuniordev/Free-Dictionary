@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/widgets/custom_lottie_widget.dart';
+import 'package:lottie/lottie.dart';
 
 class LoadingPageView extends StatelessWidget {
   const LoadingPageView({super.key});
@@ -9,14 +9,16 @@ class LoadingPageView extends StatelessWidget {
     final ctxTh = Theme.of(context);
     return Scaffold(
       backgroundColor: ctxTh.primaryColor,
-      body: const Center(
+      body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomLottieWidget(
-              urlLottie:
-                  'https://lottie.host/fb606eb5-d4d7-4c44-a603-95cc13afd2a6/lcCE4tP0zx.json'),
-          Text(
+          Lottie.asset(
+            'assets/lottie/loading.json',
+            width: 200,
+            height: 200,
+          ),
+          const Text(
             "Loading...",
             style: TextStyle(
               color: Colors.white,
