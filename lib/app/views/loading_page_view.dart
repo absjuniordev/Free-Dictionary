@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_dicionary/app/widgets/custom_lottie_widget.dart';
 
 class LoadingPageView extends StatelessWidget {
   const LoadingPageView({super.key});
@@ -8,27 +9,22 @@ class LoadingPageView extends StatelessWidget {
     final ctxTh = Theme.of(context);
     return Scaffold(
       backgroundColor: ctxTh.primaryColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircularProgressIndicator(
-              backgroundColor: ctxTh.primaryTextTheme.headlineSmall?.color,
-              valueColor: AlwaysStoppedAnimation<Color>(
-                ctxTh.primaryColor,
-              ),
+      body: const Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomLottieWidget(
+              urlLottie:
+                  'https://lottie.host/fb606eb5-d4d7-4c44-a603-95cc13afd2a6/lcCE4tP0zx.json'),
+          Text(
+            "Loading...",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
             ),
-            const SizedBox(height: 10),
-            Text(
-              'Loading...',
-              style: TextStyle(
-                color: ctxTh.primaryTextTheme.titleLarge?.color,
-                fontSize: 30,
-              ),
-            ),
-          ],
-        ),
-      ),
+          )
+        ],
+      )),
     );
   }
 }

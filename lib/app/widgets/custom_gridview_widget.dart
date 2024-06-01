@@ -42,6 +42,7 @@ class CustomGridView extends StatelessWidget {
                 return InkWell(
                   onTap: () => onTap(key),
                   child: Card(
+                    color: Colors.grey[170],
                     elevation: 3,
                     child: Stack(
                       children: [
@@ -60,6 +61,7 @@ class CustomGridView extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () => onFavoriteToggle(key),
                             child: Icon(
+                              size: sizeOff * 0.04,
                               isFavorite
                                   ? Icons.favorite
                                   : Icons.favorite_border,
