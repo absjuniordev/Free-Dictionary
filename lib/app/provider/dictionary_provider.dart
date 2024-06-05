@@ -3,10 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
+import 'package:free_dicionary/app/models/favorite_model.dart';
 import 'package:free_dicionary/app/services/api_service.dart';
+
+import '../services/database_service.dart';
 
 class DictionaryProvider extends ChangeNotifier {
   final _apiService = ApiService();
+  final _databaseService = DatabaseService();
   double _percentIndication = 0.0;
   final List<String> _favoriteItems = [];
   Map<String, dynamic> _wordsAssets = {};
@@ -23,6 +27,11 @@ class DictionaryProvider extends ChangeNotifier {
   DictionaryModel? get word => _word;
 
   Map<String, dynamic> get wordsAssets => _wordsAssets;
+
+  DictionaryProvider() {
+    carregarDadosJson();
+    carregarFavoritos();
+  }
 
   Future<void> carregarDadosJson() async {
     String jsonString =
@@ -48,11 +57,13 @@ class DictionaryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  onFavoriteToggle(String key) {
+  Future<void> onFavoriteToggle(String key) async {
     if (_favoriteItems.contains(key)) {
       _favoriteItems.remove(key);
+      await _databaseService.deleteFavorite(key);
     } else {
       _favoriteItems.add(key);
+      await _databaseService.insertFavorite(FavoriteModel(word: key));
     }
     notifyListeners();
   }
@@ -65,6 +76,12 @@ class DictionaryProvider extends ChangeNotifier {
       _percentIndication = 1.0;
     }
 
+    notifyListeners();
+  }
+
+  Future<void> carregarFavoritos() async {
+    final favorites = await _databaseService.getFavorites();
+    _favoriteItems.addAll(favorites.map((f) => f.word));
     notifyListeners();
   }
 }

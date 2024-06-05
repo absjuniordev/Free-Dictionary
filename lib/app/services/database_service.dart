@@ -55,4 +55,13 @@ class DatabaseService {
       whereArgs: [word],
     );
   }
+
+  Future<List<FavoriteModel>> getFavorites() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('favorites');
+
+    return List.generate(maps.length, (i) {
+      return FavoriteModel.fromMap(maps[i]);
+    });
+  }
 }
