@@ -39,11 +39,20 @@ class DatabaseService {
   }
 
   Future<void> insertFavorite(FavoriteModel favorite) async {
-    final db = await _db;
+    final db = await database;
     await db.insert(
       'favorites',
       favorite.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> deleteFavorite(String word) async {
+    final db = await database;
+    await db.delete(
+      'favorites',
+      where: 'word = ?',
+      whereArgs: [word],
     );
   }
 }
