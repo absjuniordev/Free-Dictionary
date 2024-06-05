@@ -1,4 +1,5 @@
 import 'package:free_dicionary/app/models/favorite_model.dart';
+import 'package:free_dicionary/app/models/history_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
@@ -38,11 +39,30 @@ class DatabaseService {
       ''');
   }
 
-  Future<void> insertFavorite(FavoriteModel favorite) async {
+  Future<void> insertHistory(HistoryModel favorite) async {
+    final db = await database;
+    await db.insert(
+      'history',
+      favorite.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<HistoryModel>> getHistory() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db.query('history', orderBy: 'date DESC');
+
+    return List.generate(maps.length, (i) {
+      return HistoryModel.fromMap(maps[i]);
+    });
+  }
+
+  Future<void> insertFavorite(FavoriteModel history) async {
     final db = await database;
     await db.insert(
       'favorites',
-      favorite.toMap(),
+      history.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }

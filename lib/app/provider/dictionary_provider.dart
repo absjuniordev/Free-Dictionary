@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
 import 'package:free_dicionary/app/models/favorite_model.dart';
+import 'package:free_dicionary/app/models/history_model.dart';
 import 'package:free_dicionary/app/services/api_service.dart';
 
 import '../services/database_service.dart';
@@ -13,6 +14,7 @@ class DictionaryProvider extends ChangeNotifier {
   final _databaseService = DatabaseService();
   double _percentIndication = 0.0;
   final List<String> _favoriteItems = [];
+  final List<String> _historyWord = [];
   Map<String, dynamic> _wordsAssets = {};
   int _activeIndex = 0;
   int _clickCount = 0;
@@ -20,9 +22,8 @@ class DictionaryProvider extends ChangeNotifier {
   double get percentIndication => _percentIndication;
   int get clickCount => _clickCount;
   List<String> get favoriteItems => _favoriteItems;
-
+  List<String> get historyWord => _historyWord;
   int get activeIndex => _activeIndex;
-
   DictionaryModel? _word;
   DictionaryModel? get word => _word;
 
@@ -31,6 +32,7 @@ class DictionaryProvider extends ChangeNotifier {
   DictionaryProvider() {
     carregarDadosJson();
     carregarFavoritos();
+    carregarHistory();
   }
 
   Future<void> carregarDadosJson() async {
@@ -68,6 +70,13 @@ class DictionaryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> inserterHsitory(String key) async {
+    _historyWord.add(key);
+    await _databaseService
+        .insertHistory(HistoryModel(word: key, date: DateTime.now()));
+    notifyListeners();
+  }
+
   void setPercentIndication() {
     _clickCount++;
     _percentIndication = _clickCount / wordsAssets.length;
@@ -82,6 +91,12 @@ class DictionaryProvider extends ChangeNotifier {
   Future<void> carregarFavoritos() async {
     final favorites = await _databaseService.getFavorites();
     _favoriteItems.addAll(favorites.map((f) => f.word));
+    notifyListeners();
+  }
+
+  Future<void> carregarHistory() async {
+    final history = await _databaseService.getHistory();
+    _historyWord.addAll(history.map((h) => h.word));
     notifyListeners();
   }
 }

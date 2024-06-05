@@ -11,8 +11,6 @@ class WordsViewWidget extends StatefulWidget {
 }
 
 class _WordsViewWidgetState extends State<WordsViewWidget> {
-  final List<String> _historyWord = [];
-
   final injectorStore = getIt<DictionaryProvider>();
   @override
   void initState() {
@@ -53,7 +51,7 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                     onFavoriteToggle: injectorStore.onFavoriteToggle,
                     items: injectorStore.wordsAssets.keys.toList(),
                     onTap: (key) {
-                      _historyWord.insert(0, key);
+                      injectorStore.inserterHsitory(key);
 
                       Navigator.push(
                         context,
@@ -69,7 +67,7 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                     ? CustomGridView(
                         favoriteItems: injectorStore.favoriteItems,
                         onFavoriteToggle: injectorStore.onFavoriteToggle,
-                        items: _historyWord,
+                        items: injectorStore.historyWord,
                         onTap: (key) {
                           Navigator.push(
                             context,
