@@ -87,7 +87,7 @@ class SelectedWordView extends StatelessWidget {
                     setAudioUrl: audioUrl!,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(sizeOff / 70),
+                    padding: EdgeInsets.all(sizeOff / 80),
                     child: Text(
                       "Meanings",
                       style: TextStyle(
@@ -97,7 +97,7 @@ class SelectedWordView extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(sizeOff / 70),
+                    padding: EdgeInsets.all(sizeOff / 80),
                     child: AutoSizeText(
                       '${word.meanings![0].partOfSpeech?[0].toUpperCase()}${word.meanings![0].partOfSpeech!.substring(1)}: ${word.meanings![0].definitions![0].definition}',
                       style: TextStyle(
