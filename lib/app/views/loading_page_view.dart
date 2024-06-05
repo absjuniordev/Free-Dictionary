@@ -10,23 +10,24 @@ class LoadingPageView extends StatelessWidget {
     return Scaffold(
       backgroundColor: ctxTh.primaryColor,
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Lottie.asset(
-            'assets/lottie/loading.json',
-            width: 200,
-            height: 200,
-          ),
-          const Text(
-            "Loading...",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              'assets/lottie/loading.json',
+              width: 200,
+              height: 200,
             ),
-          )
-        ],
-      )),
+            const Text(
+              "Loading...",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
