@@ -37,6 +37,21 @@ class DatabaseService {
         date TEXT
       )
       ''');
+    await db.execute('''
+      CREATE TABLE progress(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        value REAL,
+        click INTEGER        
+      )
+      ''');
+  }
+
+  Future<void> inserterProgres(double value, int click) async {
+    final db = await database;
+    await db.rawInsert(
+      'INSERT OR REPLACE INTO progress (id, value, click) VALUES (?, ?, ?)',
+      [1, value, click],
+    );
   }
 
   Future<void> insertHistory(HistoryModel favorite) async {
@@ -83,5 +98,21 @@ class DatabaseService {
     return List.generate(maps.length, (i) {
       return FavoriteModel.fromMap(maps[i]);
     });
+  }
+
+  Future<Map<String, dynamic>> getProgress() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db.query('progress', orderBy: 'id DESC', limit: 1);
+    if (maps.isNotEmpty) {
+      return {
+        'value': maps.first['value'] as double,
+        'click': maps.first['click'] as int,
+      };
+    }
+    return {
+      'value': 0.0,
+      'click': 0,
+    };
   }
 }

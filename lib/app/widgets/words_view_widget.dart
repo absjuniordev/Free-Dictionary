@@ -52,7 +52,6 @@ class _WordsViewWidgetState extends State<WordsViewWidget> {
                     items: injectorStore.wordsAssets.keys.toList(),
                     onTap: (key) {
                       injectorStore.inserterHsitory(key);
-
                       Navigator.push(
                         context,
                         MaterialPageRoute(

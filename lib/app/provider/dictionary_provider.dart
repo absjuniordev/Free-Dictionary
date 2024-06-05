@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:free_dicionary/app/models/dictionary_model.dart';
@@ -31,8 +30,9 @@ class DictionaryProvider extends ChangeNotifier {
 
   DictionaryProvider() {
     carregarDadosJson();
-    carregarFavoritos();
-    carregarHistory();
+    loadFavoritos();
+    loadHistory();
+    loadProgress();
   }
 
   Future<void> carregarDadosJson() async {
@@ -77,26 +77,35 @@ class DictionaryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setPercentIndication() {
+  Future<void> setPercentIndication() async {
     _clickCount++;
     _percentIndication = _clickCount / wordsAssets.length;
+    await _databaseService.inserterProgres(_percentIndication, clickCount);
 
     if (_percentIndication > 1.0) {
       _percentIndication = 1.0;
+      await _databaseService.inserterProgres(_percentIndication, clickCount);
     }
 
     notifyListeners();
   }
 
-  Future<void> carregarFavoritos() async {
+  Future<void> loadFavoritos() async {
     final favorites = await _databaseService.getFavorites();
     _favoriteItems.addAll(favorites.map((f) => f.word));
     notifyListeners();
   }
 
-  Future<void> carregarHistory() async {
+  Future<void> loadHistory() async {
     final history = await _databaseService.getHistory();
     _historyWord.addAll(history.map((h) => h.word));
+    notifyListeners();
+  }
+
+  Future<void> loadProgress() async {
+    final progress = await _databaseService.getProgress();
+    _percentIndication = progress['value'];
+    _clickCount = progress['click'];
     notifyListeners();
   }
 }
