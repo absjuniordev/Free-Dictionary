@@ -3,6 +3,8 @@ import 'package:free_dicionary/app/models/history_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
+import '../models/progress_model.dart';
+
 class DatabaseService {
   static Database? _db;
 
@@ -100,19 +102,13 @@ class DatabaseService {
     });
   }
 
-  Future<Map<String, dynamic>> getProgress() async {
+  Future<ProgressModel> getProgress() async {
     final db = await database;
     final List<Map<String, dynamic>> maps =
         await db.query('progress', orderBy: 'id DESC', limit: 1);
     if (maps.isNotEmpty) {
-      return {
-        'value': maps.first['value'] as double,
-        'click': maps.first['click'] as int,
-      };
+      return ProgressModel.fromJson(maps.first);
     }
-    return {
-      'value': 0.0,
-      'click': 0,
-    };
+    return ProgressModel(value: 0.0, click: 0);
   }
 }

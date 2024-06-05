@@ -104,8 +104,8 @@ class DictionaryProvider extends ChangeNotifier {
 
   Future<void> loadProgress() async {
     final progress = await _databaseService.getProgress();
-    _percentIndication = progress['value'];
-    _clickCount = progress['click'];
+    _percentIndication = progress.value;
+    _clickCount = progress.click;
     notifyListeners();
   }
 }
