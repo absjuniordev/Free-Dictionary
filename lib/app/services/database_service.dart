@@ -39,11 +39,11 @@ class DatabaseService {
 
     Database database = await openDatabase(path, version: 1);
 
-    await database.execute('DROP TABLE IF EXISTS favorites');
+    await database.execute('DELETE FROM favorites');
 
-    await database.execute('DROP TABLE IF EXISTS history');
+    await database.execute('DELETE FROM history');
 
-    await database.execute('DROP TABLE IF EXISTS progress');
+    await database.execute('DELETE FROM progress');
   }
 
   Future<void> _onCreate(Database db, int version) async {
