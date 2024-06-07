@@ -106,43 +106,43 @@ class SelectedWordView extends StatelessWidget {
                       maxLines: 4,
                     ),
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding: EdgeInsets.all(sizeOff / 80),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Card(
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Voltar",
-                                style: TextStyle(
-                                  fontSize: sizeOff / 35,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Card(
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Proximo",
-                                style: TextStyle(
-                                  fontSize: sizeOff / 35,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  // const Spacer(),
+                  // Padding(
+                  //   padding: EdgeInsets.all(sizeOff / 80),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //     children: [
+                  //       Expanded(
+                  //         child: Card(
+                  //           child: TextButton(
+                  //             onPressed: () {},
+                  //             child: Text(
+                  //               "Voltar",
+                  //               style: TextStyle(
+                  //                 fontSize: sizeOff / 35,
+                  //                 color: Colors.black,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         child: Card(
+                  //           child: TextButton(
+                  //             onPressed: () {},
+                  //             child: Text(
+                  //               "Proximo",
+                  //               style: TextStyle(
+                  //                 fontSize: sizeOff / 35,
+                  //                 color: Colors.black,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ),

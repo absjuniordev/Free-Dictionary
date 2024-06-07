@@ -41,10 +41,28 @@ class HomeScreenView extends StatelessWidget {
       body: Container(
         color: const Color.fromRGBO(106, 218, 238, 100),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            SizedBox(
+              height: sizeOff.height / 50,
+            ),
+            PopupMenuButton(itemBuilder: (ctx) {
+              return [
+                PopupMenuItem(
+                  value: 0,
+                  onTap: () => injectorStore.deleteDatabase(),
+                  child: const Text(
+                    'Clear Favorites',
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ];
+            }),
             Padding(
               padding: EdgeInsets.only(
-                top: sizeOff.height / 17,
+                // top: sizeOff.height / 17,
                 right: sizeOff.height / 50,
                 left: sizeOff.height / 50,
               ),

@@ -14,15 +14,36 @@ class DatabaseService {
     return _db!;
   }
 
+  Future<String> get _path async {
+    return path.join(await getDatabasesPath(), 'words.db');
+  }
+
   Future<Database> startDb() async {
-    String pathDb = path.join(await getDatabasesPath(), 'words.db');
+    String dbPath = await _path;
 
     Database db = await openDatabase(
-      pathDb,
+      dbPath,
       version: 1,
       onCreate: _onCreate,
     );
     return db;
+  }
+
+  Future<void> deleteDB() async {
+    String path = await _path;
+    await deleteDatabase(path);
+  }
+
+  Future<void> deleteTables() async {
+    String path = await _path;
+
+    Database database = await openDatabase(path, version: 1);
+
+    await database.execute('DROP TABLE IF EXISTS favorites');
+
+    await database.execute('DROP TABLE IF EXISTS history');
+
+    await database.execute('DROP TABLE IF EXISTS progress');
   }
 
   Future<void> _onCreate(Database db, int version) async {

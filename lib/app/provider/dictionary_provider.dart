@@ -108,4 +108,13 @@ class DictionaryProvider extends ChangeNotifier {
     _clickCount = progress.click;
     notifyListeners();
   }
+
+  Future<void> deleteDatabase() async {
+    await _databaseService.deleteTables();
+    _historyWord.clear();
+    _favoriteItems.clear();
+    _percentIndication = 0.0;
+    _clickCount = 0;
+    notifyListeners();
+  }
 }
