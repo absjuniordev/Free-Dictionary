@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:free_dicionary/app/widgets/custom_popup_menu_button.dart';
 import 'package:free_dicionary/app/widgets/words_view_widget.dart';
 import '../provider/dictionary_provider.dart';
 import '../widgets/card_indication_widget.dart';
@@ -46,20 +47,9 @@ class HomeScreenView extends StatelessWidget {
             SizedBox(
               height: sizeOff.height / 50,
             ),
-            PopupMenuButton(itemBuilder: (ctx) {
-              return [
-                PopupMenuItem(
-                  value: 0,
-                  onTap: () => injectorStore.deleteDatabase(),
-                  child: const Text(
-                    'Clear Favorites',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              ];
-            }),
+            CustomPopupMenuButton(
+              onTap: injectorStore.deleteDatabase,
+            ),
             Padding(
               padding: EdgeInsets.only(
                 // top: sizeOff.height / 17,
