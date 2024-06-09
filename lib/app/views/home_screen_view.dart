@@ -44,9 +44,7 @@ class HomeScreenView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            SizedBox(
-              height: sizeOff.height / 50,
-            ),
+            SizedBox(height: sizeOff.height / 30),
             CustomPopupMenuButton(
               onTap: injectorStore.deleteDatabase,
             ),
