@@ -9,6 +9,19 @@ Este é um aplicativo simples de dicionário de inglês, onde os usuários podem
 - Capacidade de ouvir a pronúncia de cada palavra.
 - Navegação intuitiva entre as páginas de palavra e detalhes.
 
+## Capituras de Tela
+
+<p float="left">
+  <img src="assets\app_image\app_image (1).png" width="200" height="400" />
+  <img src="assets\app_image\app_image (2).png" width="200" height="400" /> 
+  <img src="assets\app_image\app_image (3).png" width="200" height="400" /> 
+  <img src="assets\app_image\app_image (4).png" width="200" height="400" /> 
+  <img src="assets\app_image\app_image (5).png" width="200" height="400" /> 
+  <img src="assets\app_image\app_image (6).png" width="200" height="400" /> 
+  <img src="assets\app_image\app_image (8).png" width="200" height="400" /> 
+</p>
+
+
 ## Dependências
 
 O aplicativo utiliza as seguintes dependências:
@@ -19,6 +32,12 @@ O aplicativo utiliza as seguintes dependências:
 - [just_audio](https://pub.dev/packages/just_audio): Reprodução de áudio.
 - [auto_size_text](https://pub.dev/packages/auto_size_text): Redimensionamento automático do texto.
 - [get_it](https://pub.dev/packages/get_it): Sistema de injeção de dependência.
+- [percent_indicator](https://pub.dev/packages/percent_indicator): Exibição de indicadores percentuais.
+- [carousel_slider](https://pub.dev/packages/carousel_slider): Slider de carrossel.
+- [lottie](https://pub.dev/packages/lottie): Animações Lottie.
+- [sqflite](https://pub.dev/packages/sqflite): Banco de dados SQLite.
+- [path](https://pub.dev/packages/path): Manipulação de caminhos de arquivos.
+
 
 ## Instalação
 
