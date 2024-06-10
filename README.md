@@ -53,9 +53,5 @@ O aplicativo utiliza as seguintes dependências:
 3. Na tela de detalhes, você verá a pronúncia, significado e um botão para ouvir a pronúncia da palavra.
 4. Você pode voltar à tela principal clicando no botão de voltar ou deslizando para trás.
 
-## Próximos Passos
 
-1. Implementar a funcionalidade de histórico de palavras consultadas.
-2. Adicionar a capacidade de marcar palavras como favoritas.
-3. Melhorar a interface do usuário para uma experiência mais agradável.
 
