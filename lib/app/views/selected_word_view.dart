@@ -17,12 +17,30 @@ class SelectedWordView extends StatelessWidget {
   Widget build(BuildContext context) {
     final injectorStore = getIt<DictionaryProvider>();
     final sizeOff = MediaQuery.of(context).size.height;
+    final ctxTh = Theme.of(context);
 
     return FutureBuilder<DictionaryModel?>(
       future: injectorStore.fetchWord(selectedWord),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPageView();
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Container(
+              color: ctxTh.primaryColor,
+              child: AlertDialog(
+                title: const Text('An error has occurred'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+            ),
+          );
         } else {
           final word = snapshot.data!;
 
