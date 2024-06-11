@@ -55,15 +55,16 @@ class _AudioPlayWidgetState extends State<AudioPlayWidget> {
 
   Widget _playerButton(PlayerState playerState) {
     final processingState = playerState.processingState;
-    if (processingState == ProcessingState.loading ||
-        processingState == ProcessingState.buffering) {
-      return Container(
-        margin: const EdgeInsets.all(8.0),
-        width: 64.0,
-        height: 64.0,
-        child: const CircularProgressIndicator(),
-      );
-    } else if (!_audioPlayer.playing) {
+    // if (processingState == ProcessingState.loading ||
+    //     processingState == ProcessingState.buffering) {
+    //   return Container(
+    //     margin: const EdgeInsets.all(8.0),
+    //     width: 64.0,
+    //     height: 64.0,
+    //     child: const CircularProgressIndicator(),
+    //   );
+    // } else
+    if (!_audioPlayer.playing) {
       return IconButton(
         icon: const Icon(Icons.play_arrow),
         iconSize: 64.0,
