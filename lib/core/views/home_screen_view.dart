@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/widgets/custom_popup_menu_button.dart';
-import 'package:free_dicionary/app/widgets/words_view_widget.dart';
-import '../provider/dictionary_provider.dart';
-import '../widgets/card_indication_widget.dart';
+import 'package:free_dicionary/core/views/widgets/custom_popup_menu_button.dart';
+import 'package:free_dicionary/core/views/widgets/words_view_widget.dart';
+import '../view_models/dictionary_provider.dart';
+import 'widgets/card_indication_widget.dart';
 import 'selected_word_view.dart';
 
 class HomeScreenView extends StatelessWidget {

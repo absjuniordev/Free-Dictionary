@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:free_dicionary/app/models/dictionary_model.dart';
-import 'package:free_dicionary/app/models/favorite_model.dart';
-import 'package:free_dicionary/app/models/history_model.dart';
-import 'package:free_dicionary/app/services/api_service.dart';
+import 'package:free_dicionary/core/model/dictionary_model.dart';
+import 'package:free_dicionary/core/model/favorite_model.dart';
+import 'package:free_dicionary/core/model/history_model.dart';
+import 'package:free_dicionary/core/services/api_service.dart';
 
 import '../services/database_service.dart';
 

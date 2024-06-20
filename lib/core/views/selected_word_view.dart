@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/models/dictionary_model.dart';
-import 'package:free_dicionary/app/provider/dictionary_provider.dart';
-import 'package:free_dicionary/app/views/loading_page_view.dart';
+import 'package:free_dicionary/core/model/dictionary_model.dart';
+import 'package:free_dicionary/core/view_models/dictionary_provider.dart';
+import 'package:free_dicionary/core/views/loading_page_view.dart';
 import 'package:get_it/get_it.dart';
 
-import '../widgets/audio_play_widget.dart';
+import 'widgets/audio_play_widget.dart';
 
 final getIt = GetIt.instance;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/provider/dictionary_provider.dart';
-import '../views/selected_word_view.dart';
+import 'package:free_dicionary/core/view_models/dictionary_provider.dart';
+import '../selected_word_view.dart';
 import 'custom_gridview_widget.dart';
 
 class WordsViewWidget extends StatefulWidget {

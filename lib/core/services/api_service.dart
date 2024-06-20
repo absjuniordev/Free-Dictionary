@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:free_dicionary/app/models/dictionary_model.dart';
+import 'package:free_dicionary/core/model/dictionary_model.dart';
 
 class ApiService {
   final dio = Dio();

@@ -1,9 +1,9 @@
-import 'package:free_dicionary/app/models/favorite_model.dart';
-import 'package:free_dicionary/app/models/history_model.dart';
+import 'package:free_dicionary/core/model/favorite_model.dart';
+import 'package:free_dicionary/core/model/history_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 
-import '../models/progress_model.dart';
+import '../model/progress_model.dart';
 
 class DatabaseService {
   static Database? _db;

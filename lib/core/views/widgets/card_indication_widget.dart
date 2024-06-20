@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-import '../provider/dictionary_provider.dart';
-import '../views/selected_word_view.dart';
+import '../../view_models/dictionary_provider.dart';
+import '../selected_word_view.dart';
 
 class CardIndicationWidget extends StatelessWidget {
   const CardIndicationWidget({super.key});
